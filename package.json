@@ -1,0 +1,22 @@
+{
+  "name": "ebtestdataservice",
+  "version": "1.0.0",
+  "description": "Web Service for Test Data",
+  "main": "testService.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epicberry/ebTestDataService.git"
+  },
+  "author": "Param Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epicberry/ebTestDataService/issues"
+  },
+  "homepage": "https://github.com/epicberry/ebTestDataService#readme",
+  "dependencies": {
+    "restify": "^4.2.0"
+  }
+}
