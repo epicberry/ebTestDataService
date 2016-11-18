@@ -1,70 +1,52 @@
 var restify = require('restify');
+//var sampleData = require('./sampleData.js');
 
-var testCases = [{
-    "testCaseId": "1",
-    "testCategory": "cat1",
-    "includeInExecution": true,
-    "description": "",
-    "basic": {
-        "browser": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0",
-        "url": "http://www.google.com",
-    },
-    "steps": {
-        "testQuery": "github",
-    }
-}, {
-    "testCaseId": "2",
-    "testCategory": "cat1",
-    "includeInExecution": true,
-    "description": "",
-    "basic": {
-        "browser": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0",
-        "url": "http://www.google.com",
-    },
-    "steps": {
-        "testQuery": "Param Testing",
-    }
-}, {
-    "testCaseId": "3",
-    "testCategory": "cat2",
-    "includeInExecution": false,
-    "description": "",
-    "basic": {
-        "browser": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0",
-        "url": "http://www.google.com",
-    },
-    "steps": {
-        "testQuery": "one more time",
-    }
-}, {
-    "testCaseId": "4",
-    "testCategory": "cat3",
-    "includeInExecution": true,
-    "description": "",
-    "basic": {
-        "browser": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0",
-        "url": "http://www.google.com",
-    },
-    "steps": {
-        "testQuery": "one last time",
-    }
-}];
+//console.log(sampleData.testCases);
+//console.log(JSON.stringify(sampleData.testCases));
 
+//var testCases = sampleData.testCases;
 
 function getTestCaseData(req, res, next) {
+
     res.charSet('utf-8');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-    if (req.params.testCaseId == 'all') {
-        res.send(testCases);
-    } else {
-        var testCaseData = testCases.filter(function(t) {
-            return t.testCaseId == req.params.testCaseId;
-        });
-        res.send(testCaseData);
-    }
+    var testCaseDetails = fetchTestCaseDetails(req.params.testCaseId);
+    res.send(testCaseDetails);
+
+    // if (req.params.testCaseId == 'all') {
+    //     res.send(testCases);
+    // } else {
+
+    // var testCaseData = testCaseDetails.filter(function(t) {
+    //     return t.testCaseId == req.params.testCaseId;
+    // });
+
+    // }
     next();
+}
+
+function getTestCases(req, res, next) {
+    res.charSet('utf-8');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    var testCases = fetchTestCases();
+    res.send(testCases);
+    next();
+}
+
+function fetchTestCases() {
+    // Replace with Ajax Call
+    var sampleTestCases = require('./sampleTestCases.js');
+    return sampleTestCases.testCases;
+}
+
+function fetchTestCaseDetails(testCaseId) {
+    // Replace with Ajax Call
+    var sampleTestCases = require('./sampleData.js');
+    sampleTestCases.testCaseId = testCaseId;
+    return sampleTestCases.testCaseDetails2(3);
 }
 
 var server = restify.createServer({
@@ -72,6 +54,10 @@ var server = restify.createServer({
 });
 server.get('/data/:testCaseId', getTestCaseData);
 server.head('/data/:testCaseId', getTestCaseData);
+
+server.get('/tests', getTestCases);
+server.head('/tests', getTestCases);
+
 
 //server.pre(restify.pre.userAgentConnection());
 
