@@ -64,7 +64,8 @@ function getTestCases(req, res, next) {
 
 function GetTestCasesFromDB(callback) {
 var MongoClient = require('mongodb').MongoClient
-return MongoClient.connect('mongodb://localhost:27017/autoDB', function (err, db) {
+// return MongoClient.connect('mongodb://localhost:27017/autoDB', function (err, db) {
+return MongoClient.connect('mongodb://192.169.179.82:27017/autoDB', function (err, db) {
   if (err) throw err
 
   // db.collection('testCases').find().toArray(function (err, result) {
