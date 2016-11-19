@@ -1,0 +1,16 @@
+{  
+   "testCaseId":"1",
+   "testCategory":"cat1",
+   "description":"",
+   "browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0",
+   "testSteps":{  
+      "navigate":"http://www.google.com",
+      "input":{  
+         "elementName":"txtSearch",
+         "value":"Hello World"
+      },
+      "click":{  
+         "elementName":"btnSearch"
+      }
+   }
+}

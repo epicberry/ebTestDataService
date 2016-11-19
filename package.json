@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/epicberry/ebTestDataService#readme",
   "dependencies": {
+    "mongodb": "^2.2.11",
     "restify": "^4.2.0"
   }
 }
