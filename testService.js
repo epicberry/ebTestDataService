@@ -87,7 +87,7 @@ return MongoClient.connect('mongodb://user1:Pa$$W0rd@ds143767.mlab.com:43767/aut
   if (err) throw err
 
   // db.collection('testCases').find().toArray(function (err, result) {
-  db.collection('testCases').find({},{"_id":1,"testCaseId":1, "testCategory":1, "browser": 1, "testSteps": 1}).limit(10).sort({"_id":-1}).toArray(function (err, result) {
+  db.collection('testCases').find({},{"_id":1,"testCaseId":1, "testCategory":1, "browser": 1, "testSteps": 1}).sort({"_id":-1}).toArray(function (err, result) {
     if (err) throw err
 
     //console.log(result);
