@@ -11,6 +11,196 @@
       },
       "click":{  
          "elementName":"btnSearch"
-      }
+      },
+	  "validate": {  
+         "elementName":"txtSearch",
+         "valueExpected":"Hello World"
+      },
+	  "handleUsing": "details",
+	  "navigate":"http://www.newPage.com"
    }
 }
+
+Test Data
+
+{  
+   "testCaseId":"1001",
+   "project":"Project1",
+   "testCategory":"category1",
+   "description":"",
+   "browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0",
+   "testSteps":[  
+      {  
+         "type":"navigate",
+         "url":"https://www.amazon.com"
+      },
+      {  
+         "type":"input",
+         "elementName":"id=\"twotabsearchtextbox\"",
+         "value":"christmas"
+      },
+      {  
+         "type":"click",
+         "elementName":"value=\"Go\""
+      }
+   ]
+}
+
+{  
+   "testCaseId":"1002",
+   "project":"Project1",
+   "testCategory":"category1",
+   "description":"",
+   "browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0",
+   "testSteps":[  
+      {  
+         "type":"navigate",
+         "url":"https://www.amazon.com"
+      },
+      {  
+         "type":"input",
+         "elementName":"id=\"twotabsearchtextbox\"",
+         "value":"Gift"
+      },
+      {  
+         "type":"click",
+         "elementName":"value=\"Go\""
+      }
+   ]
+}
+
+{  
+   "testCaseId":"1016",
+   "project":"Project1",
+   "testCategory":"category1",
+   "description":"",
+   "browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0",
+   "testSteps":[  
+      {  
+         "type":"navigate",
+         "url":"https://www.amazon.com",
+		 "selectBy":"css"
+      },
+      {  
+         "type":"input",
+         "elementName":"[id=\"twotabsearchtextbox\"]",
+         "value":"christmas",
+		 "selectBy":"css"
+      },
+      {  
+         "type":"click",
+         "elementName":"[value=\"Go\"]",
+		 "selectBy":"css"
+      },
+      {  
+         "type":"sleep",
+		 "timeInMilliSecs":"3000"
+      },
+      {  
+         "type":"click",
+         "elementName":"[id=\"result_0\"] a",
+		 "selectBy":"css"
+      },
+      {  
+         "type":"input",
+         "elementName":"[id=\"twotabsearchtextbox\"]",
+         "value":" second search",
+		 "selectBy":"css"
+      },
+      {  
+         "type":"click",
+         "elementName":"[value=\"Go\"]",
+		 "selectBy":"css"
+      },
+      {  
+         "type":"restCall",
+         "url":"http://localhost:1111/tests",
+		 "outputVar":"$var1"
+      },
+      {  
+         "type":"dbCall",
+         "query":"select 1 from dual;",
+		 "outputVar":"$var2"
+      },
+      {  
+         "type":"input",
+         "elementName":"[id=\"twotabsearchtextbox\"]",
+         "valueByVar":"$var1 + $var2",
+		 "selectBy":"css"
+      }
+   ]
+}
+
+WORKING XPATH
+"elementName":"//*[@id=\"result_0\"]/div/div/div/div[2]/div[3]/a",
+
+WORKING NESTED anchor tag
+element(by.css('[id="result_0"] a')).click().then(function(){
+
+//*[@id=\"result_1\"]/div/div/div/div[2]/div[2]/a
+
+//*[@id="result_1"]/div/div/div/div[2]/div[2]/a
+
+//li[@id=\"result_1\"]/div/div/div/div[2]/div[2]/a
+#result_2 > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > a:nth-child(1)
+
+#result_1 > div > div > div > div.a-fixed-left-grid-col.a-col-right > div.a-row.a-spacing-small > a
+//*[@id="result_0"]/div/div[2]/div/div/a
+
+
+db.testCases.insert({"testCaseId":"1001","project":"Project1","testCategory":"category1","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"Christmas"},{"type":"click","elementName":"value=\"Go\""}]})
+db.testCases.insert({"testCaseId":"1002","project":"Project1","testCategory":"category1","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"Gift"},{"type":"click","elementName":"value=\"Go\""}]})
+db.testCases.insert({"testCaseId":"1003","project":"Project1","testCategory":"category1","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"Gloves"},{"type":"click","elementName":"value=\"Go\""}]})
+db.testCases.insert({"testCaseId":"1004","project":"Project1","testCategory":"category1","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"learn"},{"type":"click","elementName":"value=\"Go\""}]})
+db.testCases.insert({"testCaseId":"1005","project":"Project1","testCategory":"category1","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"TV"},{"type":"click","elementName":"value=\"Go\""}]})
+db.testCases.insert({"testCaseId":"1006","project":"Project1","testCategory":"category1","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"chair"},{"type":"click","elementName":"value=\"Go\""}]})
+db.testCases.insert({"testCaseId":"1007","project":"Project1","testCategory":"category2","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"couch"},{"type":"click","elementName":"value=\"Go\""}]})
+db.testCases.insert({"testCaseId":"1008","project":"Project1","testCategory":"category2","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"guitar"},{"type":"click","elementName":"value=\"Go\""}]})
+db.testCases.insert({"testCaseId":"1009","project":"Project1","testCategory":"category2","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"table"},{"type":"click","elementName":"value=\"Go\""}]})
+db.testCases.insert({"testCaseId":"1010","project":"Project1","testCategory":"category2","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"knife"},{"type":"click","elementName":"value=\"Go\""}]})
+
+
+db.testCases.insert({"testCaseId":"1011","project":"Project1","testCategory":"category2","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"Should fail 1"},{"type":"click","elementName":"value=\"WrongValue\""}]})
+db.testCases.insert({"testCaseId":"1012","project":"Project1","testCategory":"category2","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"Should fail 2"},{"type":"click","elementName":"value=\"WrongValue\""}]})
+db.testCases.insert({"testCaseId":"1013","project":"Project1","testCategory":"category2","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"Should fail 3"},{"type":"click","elementName":"value=\"WrongValue\""}]})
+db.testCases.insert({"testCaseId":"1014","project":"Project1","testCategory":"category3","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"Should fail 4"},{"type":"click","elementName":"value=\"WrongValue\""}]})
+db.testCases.insert({"testCaseId":"1015","project":"Project1","testCategory":"category3","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com"},{"type":"input","elementName":"id=\"twotabsearchtextbox\"","value":"Should fail 5"},{"type":"click","elementName":"value=\"WrongValue\""}]})
+
+
+db.testCases.insert({"testCaseId":"1016","project":"Project1","testCategory":"category1","description":"","browser":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0","testSteps":[{"type":"navigate","url":"https://www.amazon.com","selectBy":"css"},{"type":"input","elementName":"[id=\"twotabsearchtextbox\"]","value":"christmas","selectBy":"css"},{"type":"click","elementName":"[value=\"Go\"]","selectBy":"css"},{"type":"sleep","timeInMilliSecs":"3000"},{"type":"click","elementName":"//*[@id=\"result_0\"]/div/div/div/div[2]/div[3]/a","selectBy":"xpath"},{"type":"input","elementName":"[id=\"twotabsearchtextbox\"]","value":" second search","selectBy":"css"},{"type":"click","elementName":"[value=\"Go\"]","selectBy":"css"}]})
+
+
+
+describe('Amazon shopping', function() {
+  it('should open an item', function() {
+    browser.get('https://www.amazon.com');
+    element(by.css('[id="twotabsearchtextbox"]')).sendKeys('Christmas');
+	element(by.css('[value="Go"]')).click();
+	element(by.css('[title=\"A Pentatonix Christmas\"]')).click();
+	
+	expect(element(by.css('[id=\"title_feature_div\"]')).isPresent()).toBeFalsy();
+	element(by.css('[id=\"dm_atcb_B01MAYIBVT-announce\"]')).click();
+	
+    //element(by.css('[//*[@id="result_1"]/div/div/div/div[2]/div[2]/a]')).click();
+  });
+});
+
+//*[@id="result_2"]/div/div/div/div[2]/div[2]/a
+
+
+describe('undefined' , function() { it('undefined', function() {
+ browser.get('https://www.amazon.com').then(function(){
+   element(by.css('[id="twotabsearchtextbox"]')).sendKeys('Christmas').then(function(){
+         element(by.css('[value="Go"]')).click().then(function(){
+                console.log('*******Passed*******');
+             }, function(err){
+                throw new Error('Error occurred - 3'); //this would fail the step definition as well
+             });
+       }, function(err){
+          throw new Error('Error occurred - 2'); //this would fail the step definition as well
+       });
+     }, function(err){
+        throw new Error('Error occurred - 1'); //this would fail the step definition as well
+     });
+ });
+});
